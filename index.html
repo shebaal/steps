@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+        :root {
+            --line-border-fill: #ab80c4;
+            --line-border-empty: #bdbdbd;
+            --background-fill: #ab80c4;
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            background-color: #e7daeed9;
+            ;
+            font-family: 'Muli', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 0 auto;
+            width: 50%;
+            display: grid;
+            justify-content: center;
+
+        }
+
+        .pre-af {
+            text-align: center;
+            margin: 0 auto;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 100%;
+            width: 350px;
+            margin-bottom: 2.5em;
+        }
+
+        .progress-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            width: 350px;
+            background-color: var(--line-border-empty);
+            z-index: -1;
+        }
+
+        .progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background-color: var(--line-border-fill);
+            z-index: -1;
+            transition: all .5s ease-out;
+        }
+
+        .circle {
+            background-color: #fff;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--line-border-empty);
+            border-radius: 50%;
+            transition: all .4s ease-in;
+        }
+
+        .circle.active {
+            border-color: var(--line-border-fill);
+            background-color: var(--background-fill);
+            color: #fff;
+            box-shadow: 0px 0px 31px -2px rgba(105, 0, 105, 0.62);
+        }
+
+        .btn {
+            padding: 1em 3em;
+            background-color: var(--line-border-fill);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: .6em;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background-color: var(--line-border-empty);
+            cursor: not-allowed;
+        }
+
+        .bigCard {
+            background-color: #eeecec;
+            box-shadow: 31px 31px 31px -2px rgba(181, 181, 181, 0.62);
+            padding: 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 12px;
+            width: 50%;
+            margin: 0 auto;
+            direction: rtl;
+        }
+
+        .enterStyle {
+            border-bottom: 1px solid #ab80c4;
+            background: none;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            padding: 12px;
+            width: 500px;
+        }
+
+        .infoForm {
+            display: grid;
+            padding: 74px;
+            justify-content: center;
+        }
+
+        .myorder {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: #eeecec;
+            box-shadow: 2px 2px 2px 2px rgba(181, 181, 181, 0.62);
+            border: 1px;
+            border-radius: 12px;
+            height: 300px;
+
+        }
+
+        .card img {
+            width: 200px;
+            height: 200px;
+            border: none;
+            border: 1px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card p {
+            text-align: center;
+            font-size: medium;
+        }
+
+        .confirmCard {
+            background-color: #eeecec;
+            box-shadow: 2px 2px 2px 2px rgba(181, 181, 181, 0.62);
+            border: 1px;
+            border-radius: 12px;
+            padding: 12px;
+            height: 200px;
+        }
+
+        .confirmCard p {
+            font-size: medium;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .confirmCard button {
+            padding: 1em 3em;
+            background-color: var(--line-border-fill);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: .6em;
+        }
+
+        .makeflex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .end img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .end {
+            font-size: larger;
+
+        }
+
+        .myform {
+            display: none;
+            transition: all .4s ease-in;
+        }
+
+        .activeform {
+            display: block;
+
+        }
+
+        @media (max-width: 765px) {
+            .enterStyle {
+                border-bottom: 1px solid #ab80c4;
+                background: none;
+                border-top: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                padding: 12px;
+                width: 300px;
+            }
+
+            .bigCard {
+                background-color: #eeecec;
+                box-shadow: 31px 31px 31px -2px rgba(181, 181, 181, 0.62);
+                padding: 20px;
+                margin: 10px;
+                border: none;
+                border-radius: 12px;
+                width: 70%;
+                margin: 0 auto;
+            }
+
+            .myorder {
+                display: block;
+            }
+        }
+    </style>
+    <!--Header-->
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress"></div>
+            <div class="circle active">1</div>
+            <div class="circle">2</div>
+            <div class="circle">3</div>
+            <div class="circle">4</div>
+        </div>
+
+    </div>
+
+    <div class="bigCard">
+        <div class="myform activeform">
+            <div class="infoForm">
+
+                <p>لاكمال عملية الشراء نرجوا منكم ملىء البيانات</p>
+                <input type="text" placeholder="الاسم" class="enterStyle" id="username" />
+                <input type="Number" placeholder="الرقم" class="enterStyle" id="number" />
+                <input type="email" placeholder="الايميل" class="enterStyle" id="email" />
+                <input type="text" placeholder="المدينة" class="enterStyle" id="city" />
+                <input type="text" placeholder="الدولة" class="enterStyle" id="country" />
+                <textarea placeholder="صف مكانك" class="enterStyle" id="description"></textarea>
+
+            </div>
+        </div>
+        <div class="myform">
+            <p>سوف يتم الدفع عن طريق حساب PayPall</p>
+            <input type="text" placeholder="ادخل رقم البطاقة" class="enterStyle" id="code" />
+
+        </div>
+        <div class="myform">
+            <p>طلباتي</p>
+            <div class="myorder">
+                <div class="card">
+                    <img src="book1.jpg" />
+                    <p>كن انت</p>
+                    <p>20.00$</p>
+                </div>
+                <div class="confirmCard">
+                    <div class="makeflex">
+                        <p>الاجمالي</p>
+                        <p>20.00$</p>
+                    </div>
+                    <div class="makeflex">
+                        <p>الشحن</p>
+                        <p>20.00$</p>
+                    </div>
+                    <button id="confirm">تاكيد</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="myform">
+            <div class="makeflex end">
+                <img src="buy.svg">
+                <p>شكرا لاستخدام موقعنا والشراء منه</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pre-af">
+
+        <button class="btn" id="prev" disabled>السابق</button>
+        <button class="btn" id="next">التالي</button>
+    </div>
+
+    <!--END Header-->
+
+
+    <script>
+
+        const username = document.getElementById('username');
+        const number = document.getElementById('number');
+        const email = document.getElementById('email');
+        const city = document.getElementById('city');
+        const country = document.getElementById('country');
+        const description = document.getElementById('description');
+        const code = document.getElementById('code');
+        const confirm = document.querySelector("#confirm");
+        // 
+        const next = document.querySelector("#next");
+        const prev = document.querySelector("#prev");
+        const progress = document.querySelector(".progress");
+        const circles = document.querySelectorAll(".circle");
+        const forms = document.querySelectorAll(".myform");
+        let counter = 1;
+        let currentIndex = 0;
+        let ifconfirm = false;
+        confirm.addEventListener("click", confirmation)
+        function confirmation() {
+            window.alert("هل انت متاكد من الشراء")
+            ifconfirm = true;
+
+        }
+        next.addEventListener("click", () => {
+            if (currentIndex === 0) {
+                if (username.value.trim() != '' || number.value.trim() != '' || city.value.trim() != '' || country.value.trim() != '' || email.value.trim() != '' || description.value.trim() != '') {
+
+                    counter++;
+                }
+                else {
+                    window.alert("الرجاء ادخال جميع البيانات ")
+                }
+            }
+            if (currentIndex === 1) {
+                if (code.value.trim() != '') {
+
+                    counter++;
+                }
+                else {
+                    window.alert("الرجاء ادخال رقم البطاقة")
+                }
+            }
+            if (currentIndex === 2) {
+                if (ifconfirm) {
+
+                    counter++;
+                }
+                else {
+                    window.alert("من فضلك قم بتاكد الشراء")
+                }
+            }
+
+
+
+            update();
+        });
+
+        prev.addEventListener("click", () => {
+            counter--;
+            update();
+        });
+
+        function update() {
+
+
+            circles.forEach((circle, index) => {
+                if (index < counter) {
+                    currentIndex = index;
+                    circle.classList.add("active");
+
+
+                    forms.forEach((myform, index2) => {
+                        if (index === index2) {
+
+                            myform.classList.add("activeform");
+
+                        } else {
+                            myform.classList.remove("activeform");
+                        }
+                    });
+
+
+                }
+            });
+
+
+            if (counter === 1) {
+                prev.disabled = true;
+            } else if (counter === circles.length) {
+                next.disabled = true;
+            } else {
+                prev.disabled = false;
+                next.disabled = false;
+            }
+
+            const actives = document.querySelectorAll('.active');
+            progress.style.width = (actives.length - 1) / (circles.length - 1) * 100 + '%'
+
+        }
+
+    </script>
+</body>
+
+</html>
