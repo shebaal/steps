@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+<style>
+    .container {
+  padding: 10px;
+}
+.card{
+    width: 300px;
+    height: 300px;
+    background-color: #b9b6b6;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 12px;
+}
+img{
+    width: 150px;
+    height: 150px;
+}
+.makeflex
+{
+    display: flex;
+    justify-content: center;
+}
+    </style>
+    <div class="container">
+        <div class="">
+          <div class="">
+            <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for card name...">
+          </div>
+          <p>السلة:</p>
+<div id="result"></div>
+        </div>
+      <div class="">
+            <div class="row" id="myProducts">
+      
+          <div class="makeflex">
+            <div class="card">
+      
+              <div class="card-header bg-dark d-sm-flex justify-content-sm-between align-items-sm-center">
+                <div class=" card-title">
+                <img src="book1.jpg"/>
+                  <a href="#" style="color:white" class="display-inline-   block" onmouseover="this.style.color='#00e6ac'" onmouseout="this.style.color='#fff'">
+             <strong>
+              
+               <h1>الكتاب الاول</h1>
+               
+             </strong>
+                  </a>
+                  <div class="card-body bg-light">
+                   نوع الكتاب
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card-footer bg-white d-flex justify-content-between">
+                <div>
+                  <!-- <i class="icon-arrow-right5 mr-2"></i>Card number  -->
+                  <h2>200</h2>
+                  
+<p><button onclick="clickCounter()" type="button">شراء</button></p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+      
+                <div class="card-header bg-dark d-sm-flex justify-content-sm-between align-items-sm-center">
+                  <div class=" card-title">
+                  <img src="book1.jpg"/>
+                    <a href="#" style="color:white" class="display-inline-   block" onmouseover="this.style.color='#00e6ac'" onmouseout="this.style.color='#fff'">
+               <strong>
+                
+                 <h1>الكتاب الثاني</h1>
+                 
+               </strong>
+                    </a>
+                    <div class="card-body bg-light">
+                     نوع الكتاب
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="card-footer bg-white d-flex justify-content-between">
+                  <div>
+                    <!-- <i class="icon-arrow-right5 mr-2"></i>Card number  -->
+                    <h2>200</h2>
+                    
+<p><button onclick="clickCounter()" type="button">شراء</button></p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- /transparent header, white footer -->
+        </div>
+      </div>
+      
+      </div>
+
+
+<script>
+    function myFunction() {
+  var input, filter, cards, cardContainer, title, i;
+  input = document.getElementById("myFilter");
+  filter = input.value.toUpperCase();
+  cardContainer = document.getElementById("myProducts");
+  cards = cardContainer.getElementsByClassName("card");
+  for (i = 0; i < cards.length; i++) {
+    title = cards[i].querySelector(".card-title");
+    if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+      cards[i].style.display = "";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+
+function clickCounter() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML =  localStorage.clickcount;
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+
+// var mybtn = document.getElementById("add");
+// mybtn.addEventListener('click',function() {
+// 	var counts = 0;
+// 	$(".btn").click(function() {
+// 		counts += +1;
+// 		if(counts<10){
+// 			counts1 = "0" + counts
+// 		}else{
+// 			counts1 = counts;
+// 		}
+// 		$(".counts").text(counts1);
+// 	});
+	
+
+// })
+    </script>
+
+
+
+</body>
+</html>
